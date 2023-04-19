@@ -19,6 +19,10 @@ Welcome to this tutorial where I'll try to explain the best that i can how to de
 
 * Create a folder for the full project e.g. `deploy-react-app-btp-tutorial`
 * Open it in your favorite IDE
+* Open your terminal and make the following command
+```
+cf login
+```
 
 # Services
 
