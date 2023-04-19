@@ -1,0 +1,28 @@
+{
+  "version": "1.42.0",
+  "sap.app": {
+    "id": "tutorial",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "crossNavigation": {
+      "inbounds": {
+        "intent1": {
+          "signature": {
+            "parameters": {
+              "additionalParameters": "allowed"
+            },
+            "semanticObject": "tutorialFront",
+            "action": "display",
+            "title": "tutorial"
+          }
+        }
+      }
+    }
+  }
+}

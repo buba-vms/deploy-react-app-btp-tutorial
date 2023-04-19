@@ -1,0 +1,11 @@
+applications:
+  # Application Router
+  - name: tutorial-html5-deployer
+    buildpacks:
+      - nodejs_buildpack
+    memory: 1024MB
+    disk_quota: 1024MB
+    no-route: true
+    path: .
+    services:
+      - tutorial-html5-host

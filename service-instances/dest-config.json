@@ -1,0 +1,20 @@
+{
+  "init_data": {
+    "instance": {
+      "existing_destinations_policy": "update",
+      "destinations": [
+        {
+          "Type": "HTTP",
+          "clientId": "your clientID",
+          "clientSecret": "your client secret",
+          "Authentication": "OAuth2UserTokenExchange",
+          "Name": "abap-destination",
+          "tokenServiceURL": "your tokenServiceURL",
+          "ProxyType": "Internet",
+          "URL": "your url",
+          "tokenServiceURLType": "Dedicated"
+        }
+      ]
+    }
+  }
+}

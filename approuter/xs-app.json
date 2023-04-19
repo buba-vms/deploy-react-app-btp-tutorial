@@ -1,0 +1,12 @@
+{
+  "welcomeFile": "tutorial/index.html",
+  "authenticationMethod": "route",
+  "routes": [
+    {
+      "source": "^/abap(.*)",
+      "target": "$1",
+      "destination": "abap-destination",
+      "authenticationType": "xsuaa"
+    }
+  ]
+}
