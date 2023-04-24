@@ -2,12 +2,11 @@
 
 Repository created to demonstrate how you can deploy a react app using xsuaa authentication in sap btp.
 
-**Disclaimer** - I would like to share this tutorial that i created after having a hard time to deploy a react app to sap btp using xsuaa authentication. I want to make it clear that I am still a begginer in the filed, therefore, this tutorial may not be the most efficient or complete solution. However, I'm sharing my learning in the hope of helping other people that may be facing the same difficulties that i did. Feel free to share your tips and feedback.
+**Disclaimer** - I would like to share this tutorial that I created after having a hard time deploying a react app to sap btp using xsuaa authentication. I want to make it clear that I am still a beginner in the field, therefore, this tutorial may not be the most efficient or complete solution. However, I'm sharing my learning in the hope of helping other people that may be facing the same difficulties that I did. Feel free to share your tips and feedback.
 
 # Introduction
 
-Welcome to this tutorial where I'll try to explain the best that i can how to deploy a React app to SAP BTP using the XSUAA Service, the approuter configuration are mainly from this [video](https://www.youtube.com/watch?v=Jbq6zaKEUyY) from SAP Developers Youtube Channel, where Nico Schoenteich explains very well, how to conifg the approuter, and I highly recommend you to watch it, but the tutorial that he did is for UI5 application, so I had to make some adjustments to make it work for a react app.
-
+Welcome to this tutorial where I'll try to explain the best that I can how to deploy a React app to SAP BTP using the XSUAA Service, the approuter configuration are mainly from this [video](https://www.youtube.com/watch?v=Jbq6zaKEUyY) from SAP Developers Youtube Channel, where Nico Schoenteich explains very well, how to config the approuter, and I highly recommend you to watch it, but the tutorial that he did is for UI5 application, so I had to make some adjustments to make it work for a react app.
 # Prerequisites
 
 * [Basic Understanding of SAP BTP](https://help.sap.com/docs/btp/sap-business-technology-platform/btp-basic-platform-concepts?locale=en-US)
@@ -26,7 +25,7 @@ cf login
 
 # Services
 
-* inside `deploy-react-app-btp-tutorial` folder, create an `service-instances` folder you'll need it for creating the xsuaa service
+* inside `deploy-react-app-btp-tutorial` folder, create a `service-instances` folder you'll need it for creating the xsuaa service
 
 ### HTML5 Applications
 * To display or run HTML5 applications, please subscribe to at least one of the following services, I subscribed to the SAP Build Work Zone, standard edition.
@@ -34,7 +33,7 @@ cf login
 ![image](https://user-images.githubusercontent.com/101530871/233108262-7754139d-83ad-41cb-8801-6e2b69fd7b1b.png)
 
 ### ABAP Envoirment
-* On btp cockpit, create a instance of ABAP Envoirment
+* On btp cockpit, create an instance of ABAP Environment
 ![image](https://user-images.githubusercontent.com/101530871/233134090-57e54bec-b91a-4db1-ad65-43b08fb7c463.png)
 
 ![image](https://user-images.githubusercontent.com/101530871/233135584-b60f8bde-5cbc-4c8f-ba49-3c6109dfbfbb.png)
@@ -58,7 +57,7 @@ cf login
 
 ### XSUAA
 
-* inside `service-instances` create a `xs-security.json` file with the following content
+* inside `service-instances` create an `xs-security.json` file with the following content
 ```json
 {
   "xsappname": "tutorial-xsuaa",
@@ -74,7 +73,7 @@ cf login
 ```
 cf create-service xsuaa application tutorial-xsuaa -c xs-security.json
 ```
-* you should recive the following response
+* you should receive the following response
 
 ![image](https://user-images.githubusercontent.com/101530871/233129616-184100db-26b3-464a-9d16-6f7b3a5111cb.png)
 
@@ -102,14 +101,14 @@ cf create-service xsuaa application tutorial-xsuaa -c xs-security.json
   }
 }
 ```
-* to find the information above you have to click to view the credentials of abap envoirment key that we created
+* to find the information above you have to click to view the credentials of abap environment key that we created
 ![image](https://user-images.githubusercontent.com/101530871/233141067-db8c7c1e-d0c1-4e51-b310-b57e676f2d0b.png)
 
 * Open the terminal on the `service-instances` folder and insert the following command
 ```
 cf create-service destination lite tutorial-destination -c dest-config.json
 ```
-* you should recive the following response
+* you should receive the following response
 
 ![image](https://user-images.githubusercontent.com/101530871/233142111-ded50c92-968f-4b73-864b-878b8977176d.png)
 
@@ -119,7 +118,7 @@ cf create-service destination lite tutorial-destination -c dest-config.json
 ```
 cf create-service html5-apps-repo app-runtime tutorial-html5-runtime
 ```
-* you should recive the following response
+* you should receive the following response
 
 ![image](https://user-images.githubusercontent.com/101530871/233144104-9a554596-d093-4336-9d91-ce32bbfdce88.png)
 
@@ -129,7 +128,7 @@ cf create-service html5-apps-repo app-runtime tutorial-html5-runtime
 ```
 cf create-service html5-apps-repo app-host tutorial-html5-host
 ```
-* you should recive the following response
+* you should receive the following response
 
 ![image](https://user-images.githubusercontent.com/101530871/233156516-f6601f4d-a849-454f-85e3-ef8fe8a78182.png)
 
@@ -148,7 +147,7 @@ cf create-service html5-apps-repo app-host tutorial-html5-host
   }
 }
 ```
-* every approuter needs a file called `xs-app.json` that describes it's routing behavior, so create it inside the `approuter` folder with the following content
+* every approuter needs a file called `xs-app.json` that describes its routing behavior, so create it inside the `approuter` folder with the following content
 cf create-service html5-apps-repo app-host tutorial-html5-host
 ```json
 {
@@ -165,7 +164,7 @@ cf create-service html5-apps-repo app-host tutorial-html5-host
 }
 ```
 
-* finally you'll need an `manifest.yaml` file to deploy the approuter to btp using cloud foundry, so create it inside `approuter` with the following content
+* finally you'll need a `manifest.yaml` file to deploy the approuter to btp using Cloud foundry, so create it inside `approuter` with the following content
 ```yaml
 applications:
   # Application Router
@@ -186,13 +185,13 @@ applications:
 ```
 cf push approuter
 ```
-if you did every configuration of the services, you should recive the following response
+if you did every configuration of the services, you should receive the following response
 ![image](https://user-images.githubusercontent.com/101530871/233145690-1e7a8664-d3ff-49d4-8af3-65865acd9e01.png)
 
 if you go to your applications on your dev space you should see your approuter running 
 ![image](https://user-images.githubusercontent.com/101530871/233147308-62387f2c-05b5-4ab6-a1b4-dd0b48b2af3c.png)
 
-if you go to the url of your approuter and make the login you should see this, not found is exepected because we still didn't deploy our react app
+if you go to the URL of your approuter and make the login you should see this, not found is expected because we still didn't deploy our react app
 ![image](https://user-images.githubusercontent.com/101530871/233150016-b90429ef-9ac4-44d9-9a3c-0cc403ecdbb4.png)
 
 
@@ -338,12 +337,12 @@ we'll bind it to the tutorial-html5-deployer
 ```
 cf push tutorial-html5-deployer
 ```
-You should recive the following response
+You should receive the following response
 ![image](https://user-images.githubusercontent.com/101530871/233165953-3826f46f-3373-4fb4-afba-9e226bcab254.png)
 
 Now if you go to your approuter URL and make the login you should find your react app :)
 
 ![image](https://user-images.githubusercontent.com/101530871/233166618-895fbe9d-9a93-4b56-b0c8-6482a4e17434.png)
 
-I hope this tutorial can help you, i'm open to suggestions and feedback
+I hope this tutorial can help you, I'm open to suggestions and feedback
 Have a nice day
